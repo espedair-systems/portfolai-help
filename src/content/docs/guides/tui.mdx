@@ -1,0 +1,61 @@
+---
+title: Terminal Interface (TUI)
+description: PortfolAI's mission control for configuration, migrations, and live monitoring.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+## <SketchUnderline>The TUI Lifecycle</SketchUnderline>
+
+The **Terminal User Interface (TUI)** is the operational "Mission Control" for your PortfolAI instance. Unlike the web gallery which is for viewing and curating media, the TUI is designed for system management, configuration, and monitoring the server's health.
+
+
+---
+
+## <SketchUnderline>First-Run & Configuration</SketchUnderline>
+
+PortfolAI uses the TUI to ensure your environment is ready before booting the server.
+
+### 1. Automatic Setup (First Run)
+If no `config.yaml` is found in the `etc/` folder, the TUI will **automatically generate** a configuration file with safe default values for your platform.
+
+### 2. Configuration Dashboard (Subsequent Runs)
+On every run thereafter, the first window you see is the **Configuration View**. This displays your active settings:
+- **Network**: The host and port where the web server will listen.
+- **Storage**: The confirmed paths for your raw images and cache.
+- **AI Backend**: The status and model name of your current Ollama connection.
+
+---
+
+## <SketchUnderline>Database Migrations</SketchUnderline>
+
+After confirming your configuration, the TUI progresses to the **Migrations Window**.
+
+Because PortfolAI evolves, your metadata database may require structural updates to support new features (like perceptual hashing or advanced tagging). This window allows you to:
+- **Track Progress**: See which migrations are being applied in real-time.
+- **Verify Integrity**: Ensure all database tables and search indexes are healthy before the web server begins accepting requests.
+
+---
+
+## <SketchUnderline>Live Monitor (Final Window)</SketchUnderline>
+
+The heart of the TUI is the **Live Monitor**. Once your system is fully initialized, this window provides high-level observability:
+
+- **Request Rates**: Monitor the current load on your web gallery.
+- **Error Counters**: Separate totals for **Web** (client-side) and **Server** (backend) errors.
+- **Critical Logs**: A filtered stream of only the most important system logs, so you aren't overwhelmed by debug noise.
+
+### Seamless Browsing
+From this final monitor window, simply **press `b`** to automatically launch your default web browser directly to the PortfolAI gallery at [http://localhost:8080](http://localhost:8080).
+
+---
+
+## <SketchUnderline>Key Bindings</SketchUnderline>
+
+| Key | Action |
+| :--- | :--- |
+| `Space` / `Enter` | Proceed to the next window in the lifecycle. |
+| `b` | Launch web browser (only from the final Live Monitor). |
+| `q` / `Esc` | Safely shutdown the application. |
+| `L` | Toggle between live log filtering modes. |

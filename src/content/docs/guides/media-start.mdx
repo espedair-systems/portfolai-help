@@ -1,0 +1,62 @@
+---
+title: Initial Media Steps
+description: Your first steps in importing and organizing your image library.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+## <SketchUnderline>Setting Up Your Library</SketchUnderline>
+
+Before PortfolAI can showcase your work, you need to tell it where your images live. The system is designed to work with your existing folder structure, so you don't need to move files unless you want to.
+
+### 1. Identify Your Source
+Decide which directory will be your **Raw Storage**. This is where PortfolAI will look for new media to index and analyze. 
+
+<Steps>
+1. **Choose a Folder**: Typically this is `./storage/raw` inside your installation.
+2. **Copy Images**: Place a few images or folders into this directory to test the initial setup.
+3. **Verify Config**: Ensure `path.raw` in your `etc/config.yaml` points to this location.
+</Steps>
+
+---
+
+## <SketchUnderline>Your First Scan</SketchUnderline>
+
+Once you have files in place, you need to trigger the initial indexing process. This is handled by the **`media-pro`** tool.
+
+### Running the Scan
+In your terminal, run the following command to start the discovery process:
+
+```bash
+./media-pro scan --dir ./storage/raw
+```
+
+**What happens during the first scan?**
+- **Discovery**: PortfolAI maps your folder structure.
+- **Hashing**: Every image is assigned a unique perceptual hash.
+- **Queueing**: Files are queued for AI description and thumbnail generation.
+
+---
+
+## <SketchUnderline>Watch Folders (Automated)</SketchUnderline>
+
+For a truly seamless experience, you can enable **Watch Mode**. This allows PortfolAI to sit in the background and automatically process any new image you save or download into your raw folder.
+
+### Enabling Watch Mode
+Run `media-pro` with the watch flag:
+
+```bash
+./media-pro watch --dir ./storage/raw
+```
+
+*Tip: Most users leave this running in a separate terminal tab or as a background service.*
+
+---
+
+## <SketchUnderline>Next Steps</SketchUnderline>
+
+Now that your media is being indexed, you can:
+- **Monitor Progress**: Switch to the [Terminal Interface](/guides/tui/) to see the error counts and logs.
+- **View Your Gallery**: Launch the browser (press `b` in the TUI) to see your images appearing in the web dashboard.
+- **Configure AI**: Fine-tune your [AI Orchestration](/guides/config/) to speed up the descriptions.

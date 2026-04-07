@@ -1,0 +1,105 @@
+---
+title: Installing Additional Software
+description: Guide to installing FFmpeg and Ollama for PortfolAI.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+PortfolAI relies on external software for high-speed media processing and local AI intelligence. Follow the guides below to ensure your system is fully equipped.
+
+## <SketchUnderline>FFmpeg Installation</SketchUnderline>
+
+FFmpeg is the leading multimedia framework, used by PortfolAI for video processing, thumbnail generation, and format conversion.
+
+<Tabs>
+  <TabItem label="Windows" icon="microsoft">
+    1. **Using Scoop (Recommended):**
+       ```powershell
+       scoop install ffmpeg
+       ```
+    2. **Manual Install:**
+       - Download the latest build from [ffmpeg.org](https://ffmpeg.org/download.html).
+       - Extract the ZIP and move the `bin` folder to a permanent location.
+       - Add the folder to your System PATH manually.
+  </TabItem>
+  <TabItem label="macOS" icon="apple">
+    1. **Using Homebrew (Recommended):**
+       ```bash
+       brew install ffmpeg
+       ```
+    2. **Verify Installation:**
+       ```bash
+       ffmpeg -version
+       ```
+  </TabItem>
+  <TabItem label="Linux" icon="linux">
+    Install using your package manager:
+    - **Ubuntu/Debian:** `sudo apt update && sudo apt install ffmpeg`
+    - **Arch Linux:** `sudo pacman -S ffmpeg`
+    - **Fedora:** `sudo dnf install ffmpeg`
+  </TabItem>
+</Tabs>
+
+---
+
+## <SketchUnderline>libvips Installation</SketchUnderline>
+
+**libvips** is a high-performance image processing library used by PortfolAI for rapid thumbnail generation, color space management, and format conversion.
+
+<Tabs>
+  <TabItem label="Windows" icon="microsoft">
+    1. **Using vcpkg (Recommended):**
+       ```powershell
+       vcpkg install vips
+       ```
+    2. **Manual Installation:**
+       - Download the latest pre-compiled build for Windows from the [libvips website](https://www.libvips.org/install.html).
+       - Ensure the `bin` folder is added to your System PATH manually.
+  </TabItem>
+  <TabItem label="macOS" icon="apple">
+    Install using Homebrew:
+    ```bash
+    brew install vips
+    ```
+  </TabItem>
+  <TabItem label="Linux" icon="linux">
+    Install the library and development headers:
+    - **Ubuntu/Debian:** `sudo apt update && sudo apt install libvips-dev`
+    - **Arch Linux:** `sudo pacman -S libvips`
+    - **Fedora:** `sudo dnf install libvips-devel libpng-devel`
+
+    **Note:** Ensure `libpng-dev` (or `libpng-devel`) is installed if your system doesn't bundle it with libvips.
+  </TabItem>
+</Tabs>
+
+---
+
+## <SketchUnderline>AI Core: Ollama Setup</SketchUnderline>
+
+PortfolAI uses **Ollama** to provide intelligent image descriptions and ratings without sending your data to the cloud.
+
+### 1. Install Ollama
+Download and install Ollama from [ollama.ai](https://ollama.ai).
+
+<Tabs>
+  <TabItem label="Linux" icon="linux">
+    ```bash
+    curl -fsSL https://ollama.com/install.sh | sh
+    ```
+  </TabItem>
+  <TabItem label="macOS" icon="apple">
+    Download the `.zip` from the website and move the app to your Applications folder.
+  </TabItem>
+  <TabItem label="Windows" icon="microsoft">
+    Download the installer from the website and run the `.exe`.
+  </TabItem>
+</Tabs>
+
+### 2. Pull the AI Models
+PortfolAI performs best with the **Gemma 4** family. Pull the model that best matches your hardware:
+
+- **Mobile/Edge/IoT**: `ollama pull gemma4:e2b` **(Recommended for speed)**
+- **Edge/Laptops**: `ollama pull gemma4:e4b`
+- **High-speed Workstation**: `ollama pull gemma4:26b`
+- **Maximum Quality/Coding**: `ollama pull gemma4:31b`

@@ -1,0 +1,64 @@
+---
+title: Media Handling
+description: How PortfolAI manages your images and videos.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+## <SketchUnderline>The Media Engine</SketchUnderline>
+
+PortfolAI is built on a high-performance **Media Engine** that doesn't just store files—it actively analyzes them. Whether you're importing a single sketch or a massive backlog of photography, the system handles the heavy lifting.
+
+### Supported Formats
+- **Images**: JPEG, PNG, WEBP, HEIC, TIFF
+- **Vector**: SVG (rendered as previews)
+- **Videos**: MP4, MOV (frame-based analysis)
+
+---
+
+## <SketchUnderline>Perceptual Hashing</SketchUnderline>
+
+Unlike traditional checksums (which fail if a single pixel changes), PortfolAI uses **Perceptual Hashing** to find visually similar images. This allows the system to:
+
+1. **Detect Near-Duplicates**: Identify images that have been resized or re-saved.
+2. **Cluster Versions**: Group edits, crops, and variants of the same artwork together.
+3. **Save Space**: Optionally link duplicates to a single master file.
+
+---
+
+## <SketchUnderline>Processing with Media-Pro</SketchUnderline>
+
+The **`media-pro`** tool is the silent worker behind the scenes. It is included in every release and performs the following tasks:
+
+- **Thumbnail Generation**: Creates fast-loading previews for the gallery.
+- **Deep Metadata Extraction**: Reads EXIF, IPTC, and XMP data.
+- **AI Triage**: Segments images for processing by the local Ollama models.
+
+### Manual Refreshes
+If you manually add files to your storage directory, you can trigger a re-scan using:
+
+```bash
+./media-pro refresh --dir ./storage
+```
+
+---
+
+## <SketchUnderline>Storage Architecture</SketchUnderline>
+
+PortfolAI follows a **Local-First** storage philosophy. Your files are organized in a way that remains accessible even if the application is not running.
+
+| Directory | Purpose |
+| :--- | :--- |
+| `storage/raw` | Your original, untouched media files. |
+| `storage/cache` | Thumbnails and optimized web versions. |
+| `storage/db` | Metadata, tags, and AI analysis data. |
+
+---
+
+## <SketchUnderline>Video Handling</SketchUnderline>
+
+When you import a video, PortfolAI:
+1. Extracts keyframes at regular intervals.
+2. Runs the **Gemma 4** vision models on the most representative frames.
+3. Creates a searchable index of the visual content within the video timeline.

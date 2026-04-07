@@ -1,0 +1,83 @@
+---
+title: Configuration
+description: Tailoring PortfolAI to your environment.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+## <SketchUnderline>The Config File</SketchUnderline>
+
+PortfolAI is managed through a single **`config.yaml`** file located in your installation's `etc/` directory. This file controls everything from network ports and storage paths to AI model preferences.
+
+### Initial Setup
+You can find an example file in the same directory:
+
+```bash
+cp etc/config.yaml.example etc/config.yaml
+```
+
+---
+
+## <SketchUnderline>Key Properties</SketchUnderline>
+
+The configuration is organized into logical sections:
+
+### Server Settings
+Controls how you access the web interface.
+
+| Property | Default | Description |
+| :--- | :--- | :--- |
+| `port` | `8080` | The port the web server listens on. |
+| `host` | `0.0.0.0` | Bind address (use `127.0.0.1` for local only). |
+
+### Storage Paths
+Defines where your data lives.
+
+| Property | Default | Description |
+| :--- | :--- | :--- |
+| `path.raw` | `./storage/raw` | Your original image library. |
+| `path.cache` | `./storage/cache` | Generated thumbnails and web assets. |
+| `path.db` | `./storage/db` | Metadata and search index. |
+
+---
+
+## <SketchUnderline>AI Orchestration</SketchUnderline>
+
+The **`ai`** section defines how PortfolAI communicates with **Ollama**.
+
+```yaml
+ai:
+  active_model: "gemma4:e2b"
+  num_threads: 4
+  concurrency: 2
+```
+
+### Advanced Settings
+- **`active_model`**: The exact tag of the model pulled in Ollama.
+- **`concurrency`**: How many images to process in parallel.
+
+---
+
+## <SketchUnderline>Environment Variables</SketchUnderline>
+
+While YAML is the primary configuration source, you can override settings using environment variables for Docker or CI/CD deployments:
+
+- `PORTFOLAI_PORT`: Overrides `port`.
+- `PORTFOLAI_STORAGE`: Overrides the base storage directory.
+- `PORTFOLAI_OLLAMA_URL`: Connection URL for an external Ollama instance.
+
+---
+
+## <SketchUnderline>Applying Changes</SketchUnderline>
+
+Changes to the `config.yaml` are not live-reloaded for security reasons.
+
+<Steps>
+1. **Save** your edits to `etc/config.yaml`.
+2. **Stop** the running `portfolai` binary (Ctrl+C).
+3. **Restart** the application:
+   ```bash
+   ./portfolai
+   ```
+</Steps>

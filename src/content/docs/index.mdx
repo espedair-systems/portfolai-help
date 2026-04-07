@@ -1,40 +1,39 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Welcome to Portfolai Help
+description: Your sketchbook guide to mastering image management.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: A hand-drawn guide to your personal image hosting service.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/look-here.webp
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Getting Started
+      link: /help/guides/bootme/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Github Repository
+      link: https://github.com/espedair-systems/portfolai-public
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import SketchUnderline from '../../components/SketchUnderline.astro';
 
-## Next steps
+## <SketchUnderline>Explore the System</SketchUnderline>
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="The Gallery" icon="sun">
+		A vibrant showcase for your visual portfolio. Curate, organize, and share your favorite collections with a single click.
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="Secure Archive" icon="list-format">
+		Your high-resolution vault. Managing long-term storage and versioning for your entire creative history.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Media Processing" icon="setting">
+		Powerful automated workflows. Extract metadata, handle perceptual hashing, and optimize formats on-the-fly.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="AI Intelligence" icon="rocket">
+		Harness the power of AI to automatically tag images, categorize content, and detect duplicates with computer vision.
 	</Card>
 </CardGrid>
+
+

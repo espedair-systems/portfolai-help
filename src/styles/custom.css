@@ -1,0 +1,189 @@
+
+/* Custom CSS for Starlight Sketchbook Theme synced with Portfolai main app */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kalam:wght@300;400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+	--sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+	--sl-font-mono: 'JetBrains Mono', monospace;
+	
+	/* Portfolai Palette - Light */
+	--sl-color-bg: #f8fafc; /* Slate 50 */
+	--sl-color-bg-nav: #f8fafc;
+	--sl-color-bg-sidebar: #f8fafc;
+	--sl-color-bg-inline-code: #e2e8f0;
+	
+	--sl-color-accent-low: #e2e8f0; /* Slate 200 */
+	--sl-color-accent: #334155; /* Slate 700 */
+	--sl-color-accent-high: #1e293b; /* Slate 800 */
+	
+	--sl-color-text: #4b5563; /* Slate 600 */
+	--sl-color-text-accent: #334155;
+	--sl-color-text-invert: #ffffff;
+	
+	--sl-color-border: #334155; /* Darker borders for sketch effect */
+	--sl-color-gray-1: #111827; /* Headings */
+	--sl-color-gray-2: #374151;
+	--sl-color-gray-3: #4b5563;
+	--sl-color-gray-4: #9ca3af;
+	--sl-color-gray-5: #d1d5db;
+	--sl-color-gray-6: #e5e7eb;
+
+    --sketch-filter: url(#sk-dd);
+    --sketch-noise: url(#sk-n-np);
+}
+
+[data-theme='dark'] {
+	/* Portfolai Palette - Dark */
+	--sl-color-bg: #020617; /* Deep Slate 950/1000 */
+	--sl-color-bg-nav: #020617;
+	--sl-color-bg-sidebar: #020617;
+	--sl-color-bg-inline-code: #1e293b;
+	
+	--sl-color-accent-low: #1e293b;
+	--sl-color-accent: #f8fafc;
+	--sl-color-accent-high: #ffffff;
+	
+	--sl-color-text: #cbd5e1; /* Slate 300 */
+	--sl-color-text-accent: #f8fafc;
+	--sl-color-text-invert: #020617;
+	
+	--sl-color-border: #64748b; /* Slate 500 - visible but not jarring */
+	--sl-color-gray-1: #ffffff; /* Headings */
+	--sl-color-gray-2: #e2e8f0;
+	--sl-color-gray-3: #cbd5e1;
+	--sl-color-gray-4: #64748b;
+	--sl-color-gray-5: #475569;
+	--sl-color-gray-6: #1e293b;
+}
+
+/* Base style overrides */
+body {
+    background-color: var(--sl-color-bg);
+    background-image: var(--sketch-noise);
+    background-attachment: fixed;
+    color: var(--sl-color-text);
+}
+
+/* Handwritten headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Caveat', cursive;
+    color: var(--sl-color-gray-1);
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem !important; transform: rotate(-1deg); margin-bottom: 2rem !important; }
+h2 { font-size: 2.5rem !important; transform: rotate(0.5deg); border-bottom: 3px solid var(--sl-color-border) !important; padding-bottom: 0.5rem; margin-top: 3.5rem !important; }
+h3 { font-size: 2rem !important; transform: rotate(-0.5deg); margin-top: 2rem !important; }
+
+/* Sketchy Cards */
+.card {
+    background: var(--sl-color-bg) !important;
+    border: 3px solid var(--sl-color-border) !important;
+    box-shadow: 6px 6px 0px var(--sl-color-border) !important;
+    filter: var(--sketch-filter);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 6px !important;
+}
+
+[data-theme='dark'] .card {
+    background: #0f172a !important;
+}
+
+.card:hover {
+    transform: translate(-3px, -3px) rotate(-1deg);
+    box-shadow: 10px 10px 0px var(--sl-color-accent) !important;
+}
+
+/* Sidebar and Header Sketchy Borders */
+header.header {
+    border-bottom: 4px solid var(--sl-color-border) !important;
+    background-color: var(--sl-color-bg) !important;
+    filter: var(--sketch-filter);
+}
+
+.sidebar-content {
+    background-color: var(--sl-color-bg) !important;
+    border-right: 3px solid var(--sl-color-border) !important;
+    filter: var(--sketch-filter);
+}
+
+/* Buttons */
+.action.primary {
+    background-color: var(--sl-color-accent) !important;
+    color: var(--sl-color-text-invert) !important;
+    border: 3px solid var(--sl-color-border) !important;
+    box-shadow: 4px 4px 0px var(--sl-color-border) !important;
+    font-family: 'Kalam', cursive;
+    font-size: 1.3rem;
+    padding: 0.6rem 1.8rem !important;
+    transform: rotate(-2deg);
+    filter: var(--sketch-filter);
+}
+
+.action.primary:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 6px 6px 0px var(--sl-color-border) !important;
+}
+
+/* Code blocks look like they are on a sticky note */
+pre {
+    border: 3px solid var(--sl-color-border) !important;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important;
+    transform: rotate(1deg);
+    background-color: #fffac2 !important; /* Classic yellow sticky */
+    filter: var(--sketch-filter);
+    margin: 2.5rem 0 !important;
+    padding: 1.5rem !important;
+}
+
+[data-theme='dark'] pre {
+    background-color: #1e293b !important;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.4) !important;
+}
+
+pre code {
+    background: transparent !important;
+    color: var(--sl-color-gray-1) !important;
+}
+
+/* Sidebar links */
+[data-active-item] {
+    background-color: var(--sl-color-accent-low) !important;
+    color: var(--sl-color-text-accent) !important;
+    border-radius: 4px !important;
+    border: 2px dashed var(--sl-color-accent) !important;
+    transform: rotate(-1.5deg);
+    padding-left: 1.8rem !important;
+}
+
+[data-active-item]::before {
+    content: "➔";
+    position: absolute;
+    left: 0.6rem;
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+}
+
+/* Selection highlight */
+::selection {
+    background: rgba(148, 163, 184, 0.5);
+    color: var(--sl-color-gray-1);
+}
+
+/* Sketch Marker for emphasis */
+.sketch-marker {
+    background-color: #faf3a5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Kalam', cursive;
+    display: inline-block;
+    transform: rotate(-2deg);
+    color: #1e293b;
+    filter: var(--sketch-filter);
+}
+
+[data-theme='dark'] .sketch-marker {
+    background-color: #334155;
+    color: #f8fafc;
+}

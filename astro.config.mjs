@@ -4,16 +4,32 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	base: '/help',
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Portfolai Help',
+			components: {
+				Head: './src/components/Head.astro',
+			},
+			customCss: [
+				'./src/styles/custom.css',
+			],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/espedair-systems/portfolai-public' }],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Getting Started',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Introduction', link: '/guides/bootme/' },
+						{ label: 'Installing Software', link: '/guides/software/' },
+						{ label: 'Terminal Interface', link: '/guides/tui/' },
+						{ label: 'Configuration', link: '/guides/config/' },
+						{
+							label: 'Media',
+							items: [
+								{ label: 'Initial Steps', link: '/guides/media-start/' },
+								{ label: 'Media Handling', link: '/guides/media/' },
+							],
+						},
 					],
 				},
 				{

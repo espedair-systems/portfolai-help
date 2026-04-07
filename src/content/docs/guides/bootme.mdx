@@ -1,0 +1,111 @@
+---
+title: Getting Started
+description: How to install and set up your PortfolAI system.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+## <SketchUnderline>What is PortfolAI?</SketchUnderline>
+
+**PortfolAI** is a personal image hosting and management system designed for creators. It doesn't just store your images—it understands them. By combining modern web technologies with local AI, PortfolAI helps you:
+
+- **Organize Naturally**: Automatic tagging and categorization using local LLMs.
+- **Deduplicate Effortlessly**: Uses perceptual hashing to find visually similar images.
+- **Curate Beautifully**: A sketchbook-inspired gallery to showcase your vision.
+- **Stay Private**: Everything runs locally, including the AI processing.
+
+---
+
+## <SketchUnderline>Quick Install (Recommended)</SketchUnderline>
+
+Get PortfolAI running with a single command for your platform:
+
+<Tabs>
+  <TabItem label="Linux / macOS" icon="seti:shell">
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/espedair-systems/portfolai-public/main/scripts/install.sh | bash
+    ```
+  </TabItem>
+  <TabItem label="Windows" icon="microsoft">
+    ```powershell
+    irm https://raw.githubusercontent.com/espedair-systems/portfolai-public/main/scripts/install.ps1 | iex
+    ```
+  </TabItem>
+</Tabs>
+
+## <SketchUnderline>Manual Installation</SketchUnderline>
+
+PortfolAI is available as a prebuilt binary for **Windows**, **macOS**, and **Linux**. This is the fastest way to get started.
+
+<Tabs>
+  <TabItem label="Windows" icon="microsoft">
+    1. Download the latest `portfolai-windows-amd64.zip` from our [GitHub Releases](https://github.com/espedair-systems/portfolai-public/releases).
+    2. Extract the archive to your preferred location.
+    3. Open a Terminal or PowerShell and run:
+       ```powershell
+       .\portfolai.exe
+       ```
+  </TabItem>
+  <TabItem label="macOS" icon="apple">
+    1. Download `portfolai-darwin-arm64` (Apple Silicon) or `amd64` (Intel).
+    2. Make the binary executable:
+       ```bash
+       chmod +x portfolai
+       ```
+    3. Run the application:
+       ```bash
+       ./portfolai
+       ```
+    *Note: You may need to "Open Anyway" in System Settings > Privacy & Security.*
+  </TabItem>
+  <TabItem label="Linux" icon="linux">
+    1. Download the `portfolai-linux-amd64` binary.
+    2. Make it executable:
+       ```bash
+       chmod +x portfolai
+       ```
+    3. Run it:
+       ```bash
+       ./portfolai
+       ```
+  </TabItem>
+</Tabs>
+
+---
+
+## <SketchUnderline>Initial Configuration</SketchUnderline>
+
+Before your first run, create a `config.yaml` in the `etc/` folder:
+
+```bash
+mkdir -p etc
+cp etc/config.yaml.example etc/config.yaml
+```
+
+---
+
+## <SketchUnderline>Software Installation</SketchUnderline>
+
+PortfolAI requires **FFmpeg** for media processing and **Ollama** for AI features. Follow the **[Installing Additional Software](/help/guides/software/)** guide to get your environment ready before proceeding to the initial configuration.
+
+---
+
+## <SketchUnderline>Running the System</SketchUnderline>
+
+Once configuration is complete, simply run the binary:
+
+<Tabs>
+  <TabItem label="Linux / macOS" icon="seti:shell">
+    ```bash
+    ./portfolai
+    ```
+  </TabItem>
+  <TabItem label="Windows" icon="microsoft">
+    ```powershell
+    .\portfolai.exe
+    ```
+  </TabItem>
+</Tabs>
+
+Access your gallery at [http://localhost:8080](http://localhost:8080). 

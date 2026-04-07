@@ -1,0 +1,32 @@
+---
+/**
+ * SketchUnderline.astro
+ * A component that adds a sketchy, hand-drawn underline to text.
+ */
+---
+<span class="sketch-underline-wrapper">
+    <slot />
+    <svg class="sketch-underline" viewBox="0 0 100 20" preserveAspectRatio="none">
+        <path d="M0,15 C30,12 70,18 100,15" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" />
+        <path d="M5,18 C40,15 60,20 95,17" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6" />
+    </svg>
+</span>
+
+<style>
+.sketch-underline-wrapper {
+    position: relative;
+    display: inline-block;
+    color: var(--sl-color-accent);
+    font-weight: bold;
+}
+
+.sketch-underline {
+    position: absolute;
+    bottom: -8px;
+    left: -5%;
+    width: 110%;
+    height: 15px;
+    pointer-events: none;
+    z-index: -1;
+}
+</style>

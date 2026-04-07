@@ -1,0 +1,36 @@
+---
+/**
+ * SketchFilters.astro
+ * Injects SVG filters for turbulence and noise to give elements a sketchy look.
+ */
+---
+
+<svg
+  width="0"
+  height="0"
+  style="position: absolute; pointer-events: none; visibility: hidden;"
+  aria-hidden="true"
+>
+  <defs>
+    <!-- Turbulence Filter for borders/edges -->
+    <filter id="sk-dd">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+    </filter>
+
+    <!-- Noise Pattern for backgrounds -->
+    <filter id="sk-n">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+    </filter>
+    <pattern id="sk-n-np" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" filter="url(#sk-n)" opacity="0.12" fill="white" />
+    </pattern>
+
+    <!-- Displacement for various elements -->
+    <filter id="sk-da">
+      <feTurbulence baseFrequency="0.03" numOctaves="3" seed="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
