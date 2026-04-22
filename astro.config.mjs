@@ -5,6 +5,11 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	base: '/help',
+
+	// base: '/portfolai-public',
+	// site: 'https://espedair-systems.github.io',
+
+
 	integrations: [
 		starlight({
 			title: 'Portfolai Help',
@@ -18,19 +23,25 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Getting Started',
+					link: '/getting-started/',
+				},
+				{
+					label: 'Guides',
 					items: [
-						{ label: 'Introduction', link: '/guides/bootme/' },
-						{ label: 'Installing Software', link: '/guides/software/' },
 						{ label: 'Terminal Interface', link: '/guides/tui/' },
 						{ label: 'Configuration', link: '/guides/config/' },
 						{
-							label: 'Media',
+							label: 'Media Management',
 							items: [
 								{ label: 'Initial Steps', link: '/guides/media-start/' },
 								{ label: 'Media Handling', link: '/guides/media/' },
 							],
 						},
 					],
+				},
+				{
+					label: 'Helper',
+					autogenerate: { directory: 'help' },
 				},
 				{
 					label: 'Reference',

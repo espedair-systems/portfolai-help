@@ -1,0 +1,46 @@
+---
+title: Exhibition Gallery
+description: A cinematic, high-fidelity presentation layer for your most impactful visual and video assets.
+---
+
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+import LookHere from '../../../components/LookHere.astro';
+
+The **Exhibition Gallery** is the premier presentation layer of PortfolAI. It is designed for immersive browsing, utilizing a horizontal carousel-based layout that prioritizes visual impact and thematic cohesion.
+
+## <SketchUnderline>Immersive Presentation</SketchUnderline>
+
+The gallery is split into specialized "Archives" based on media type, allowing for distinct viewing experiences.
+
+### Navigation Systems
+- **Horizontal Flow**: Elements are arranged in high-fidelity cards. Use the scroll wheel or the on-screen chevron controls to move laterally through an archive.
+- **Section Paging**: Use the double-chevron buttons (**« / »**) to jump between pages (groups of 12) within a large collection.
+- **Cinematic Overlays**: Hovering over any asset reveals its metadata and thematic context.
+
+---
+
+## <SketchUnderline>Curated Archives</SketchUnderline>
+
+The gallery utilizes specialized database filters to determine which assets are "Archive Worthy."
+
+<LookHere message="The gallery uses the I-GALLERY and V-GALLERY filters to determine entry criteria." />
+
+### Image Archive
+Targets high-resolution captures. It utilizes the `I-GALLERY` filter to ensure only images meeting specific quality or thematic criteria are shown.
+
+### Video Archive
+Targets motion-based assets. It utilizes the `V-GALLERY` filter and provides a distinct presentation style optimized for video previews.
+
+---
+
+## <SketchUnderline>Metadata Visualization</SketchUnderline>
+
+Each piece in the gallery is treated as a premium "Sketch" or "Capture."
+- **Niche Context**: Technical metadata (lat/long coordinates, timestamps) are integrated into the footer for archival authenticity.
+- **Thematic Labels**: Assets are automatically labeled with their media type and display their origin source.
+
+---
+
+## <SketchUnderline>Interactive Workflow</SketchUnderline>
+
+Selecting any asset in the Gallery launches the **Visualizer Hub** (for images) or the **Focus Video Player** (for videos), maintaining your relative position within the collection for seamless browsing.

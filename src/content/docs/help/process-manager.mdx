@@ -1,0 +1,61 @@
+---
+title: System Health & AI Status
+description: Keeping an eye on processing tasks and your computer's performance.
+---
+
+import SketchUnderline from '../../../components/SketchUnderline.astro';
+
+The **Process Manager** provides status monitoring for background media tasks and hardware utilization metrics.
+
+## <SketchUnderline>The Work Queue</SketchUnderline>
+
+Real-time monitoring of background tasks:
+- **Thumbnail Generation**: Optimization of assets for gallery display.
+- **Analysis Tasks**: Media description and metadata generation.
+- **Integrity Cheks**: Hashing for duplicate detection and file tracking.
+
+---
+
+## <SketchUnderline>Hardware at a Glance</SketchUnderline>
+
+System resource utilization data:
+- **Compute (CPU/GPU)**: Processor load during active tasks.
+- **Memory**: Resident memory usage of the processing server.
+- **Storage**: Available disk space in the library volume.
+
+---
+
+## <SketchUnderline>Taking Control</SketchUnderline>
+
+Manual task management:
+- **Suspend All**: Pause background processing queue.
+- **Requeue Operations**: Retry failed processing attempts.
+- **Purge Cache**: Clear and re-generate existing preview assets.
+
+---
+
+<h2 id="media-library"><SketchUnderline>Media Library</SketchUnderline></h2>
+
+Configuration of media source directories and ingestion parameters.
+- **Folder Sync**: Path mappings for primary media storage.
+- **Indexing**: Logic for new asset discovery and registration.
+- **Retention**: Lifecycle management for high-resolution proxy assets.
+
+---
+
+<h2 id="content-processing"><SketchUnderline>Content Processing</SketchUnderline></h2>
+
+Management of generated preview assets and cache.
+- **Assets**: Generation of thumbnails and low-resolution media proxies.
+- **Storyboards**: Creation of frame-strips for video timeline previews.
+- **Cache**: Controls for clearing and rebuilding existing preview assets.
+
+---
+
+<h2 id="ai-analysis"><SketchUnderline>AI Analysis</SketchUnderline></h2>
+
+Machine learning operations for media categorization and understanding.
+- **Tagging**: Generation of descriptive labels and search metadata.
+- **Object Detection**: Identification of specific elements within scenes.
+- **Classification**: Automated organization based on visual characteristics.
+

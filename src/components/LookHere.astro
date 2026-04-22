@@ -1,0 +1,52 @@
+---
+interface Props {
+	message: string;
+}
+
+const { message } = Astro.props;
+---
+
+<div class="look-here-container">
+	<div class="sketch-arrow">
+		<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M5 20C5 20 15 5 35 15M35 15L25 10M35 15L30 25" stroke="var(--sl-color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</div>
+	<div class="message-box">
+		<p>{message}</p>
+	</div>
+</div>
+
+<style>
+	.look-here-container {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin: 2rem 0;
+		padding: 1.5rem;
+		background: rgba(var(--sl-color-accent-rgb), 0.05);
+		border: 1px dashed var(--sl-color-accent);
+		border-radius: 4px;
+		position: relative;
+	}
+
+	.sketch-arrow {
+		flex-shrink: 0;
+		animation: nudge 2s ease-in-out infinite;
+	}
+
+	.message-box p {
+		margin: 0 !important;
+		font-family: var(--sl-font-mono);
+		font-size: 0.9rem;
+		color: var(--sl-color-accent);
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	@keyframes nudge {
+		0%, 100% { transform: translateX(0); }
+		50% { transform: translateX(5px); }
+	}
+</style>
