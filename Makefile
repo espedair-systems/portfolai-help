@@ -1,4 +1,4 @@
-.PHONY: help install dev build preview check clean distclean push
+.PHONY: help install sync dev build preview check clean distclean push
 
 # Default goal
 .DEFAULT_GOAL := help
@@ -22,10 +22,13 @@ help:
 install:
 	npm install
 
-dev:
+sync:
+	node scripts/sync-docs.js
+
+dev: sync
 	npm run dev
 
-build:
+build: sync
 	npm run build
 
 preview:

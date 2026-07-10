@@ -15,6 +15,7 @@ export default defineConfig({
 			title: 'Portfolai Help',
 			components: {
 				Head: './src/components/Head.astro',
+				Sidebar: './src/components/Sidebar.astro',
 			},
 			customCss: [
 				'./src/styles/custom.css',

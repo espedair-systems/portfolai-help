@@ -1,0 +1,40 @@
+---
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+
+const { sidebar } = Astro.locals.starlightRoute;
+const { pathname } = Astro.url;
+
+// Normalizing paths
+const isDesktop = pathname.includes('/desktop/');
+const isImaginarium = pathname.includes('/imaginarium/');
+
+let filteredSidebar = sidebar;
+
+if (isDesktop) {
+  // Show only Desktop items
+  filteredSidebar = sidebar.filter(item => {
+    return item.label.toLowerCase() === 'desktop' || item.link?.includes('/desktop/') || (item.type === 'group' && item.entries.some(e => e.link?.includes('/desktop/')));
+  });
+} else if (isImaginarium) {
+  // Show only Imaginarium items
+  filteredSidebar = sidebar.filter(item => {
+    return item.label.toLowerCase() === 'imaginarium' || item.link?.includes('/imaginarium/') || (item.type === 'group' && item.entries.some(e => e.link?.includes('/imaginarium/')));
+  });
+} else {
+  // Filter out desktop/imaginarium to keep core sidebar clean
+  filteredSidebar = sidebar.filter(item => {
+    const isExternal = item.link?.includes('/desktop/') || item.link?.includes('/imaginarium/') || (item.type === 'group' && item.entries.some(e => e.link?.includes('/desktop/') || e.link?.includes('/imaginarium/')));
+    return !isExternal;
+  });
+}
+---
+
+<SidebarPersister>
+	<SidebarSublist sublist={filteredSidebar} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>

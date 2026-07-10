@@ -187,3 +187,12 @@ pre code {
     background-color: #334155;
     color: #f8fafc;
 }
+
+/* Move splash page content up */
+[data-has-hero] .hero {
+	padding-bottom: 1.5rem !important;
+}
+
+[data-has-hero] h2:first-of-type {
+	margin-top: 1.5rem !important;
+}
