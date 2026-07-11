@@ -1,0 +1,6 @@
+---
+const { language = 'text' } = Astro.props;
+---
+<div class="code-block my-4">
+  <pre class={`language-${language} p-4 rounded-lg bg-slate-900 text-slate-100 overflow-x-auto`}><slot /></pre>
+</div>

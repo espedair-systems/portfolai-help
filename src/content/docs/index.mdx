@@ -8,28 +8,31 @@ hero:
     file: ../../assets/look-here.webp
   actions:
     - text: Getting Started
-      link: /help/getting-started/
+      link: /getting-started/
       icon: right-arrow
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 import SketchUnderline from '../../components/SketchUnderline.astro';
 
-## <SketchUnderline>Explore the System</SketchUnderline>
+## <SketchUnderline>Portfolai Components</SketchUnderline>
 
-<CardGrid stagger>
-	<Card title="The Gallery" icon="sun">
-		A vibrant showcase for your visual portfolio. Curate, organize, and share your favorite collections with a single click.
-	</Card>
-	<Card title="Secure Archive" icon="list-format">
-		Your high-resolution vault. Managing long-term storage and versioning for your entire creative history.
-	</Card>
-	<Card title="Media Processing" icon="setting">
-		Powerful automated workflows. Extract metadata, handle perceptual hashing, and optimize formats on-the-fly.
-	</Card>
-	<Card title="AI Intelligence" icon="rocket">
-		Harness the power of AI to automatically tag images, categorize content, and detect duplicates with computer vision.
-	</Card>
+<CardGrid>
+	<LinkCard 
+		title="Imaginarium CLI" 
+		href="/imaginarium/" 
+		description="A command-line image processing engine and HTTP API written in Rust. Run high-performance resizing, color operations, layers, and AI upscaling."
+	/>
+	<LinkCard 
+		title="Desktop App" 
+		href="/desktop/" 
+		description="Electron-based visual workspace. Create, arrange, and execute batch pipelines with a node editor, composite designer, and interactive debugger."
+	/>
+	<LinkCard 
+		title="Portfolai Web" 
+		href="/portfolai/" 
+		description="A self-hosted, AI-powered media server and hosting gallery. Organize photos and videos with automated metadata tagging and transcoding."
+	/>
 </CardGrid>
 
 

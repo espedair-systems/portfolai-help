@@ -1,0 +1,35 @@
+---
+title: Portfolai Web
+description: High-performance, self-hosted AI-powered media server and hosting gallery.
+slug: portfolai
+date: '2026-07-11'
+tags:
+- web
+- dashboard
+- backend
+authors:
+- Portfolai Team
+image: /assets/portfolai.png
+---
+
+import { Alert, Tabs, CodeBlock, Diagram, SummaryCard } from '@/components/ui'
+import SketchUnderline from '@/components/SketchUnderline.astro';
+
+Welcome to the documentation for **Portfolai Web**, a high-performance, self-hosted, AI-powered media hosting and portfolio management system designed to make visual libraries organized and searchable.
+
+## <SketchUnderline>Core Features</SketchUnderline>
+
+* **🤖 AI-Powered Organization**: Automatically tags, captions, and categories media assets using localized vision language models (VLMs) and computer vision algorithms.
+* **🖼️ High-Performance Gallery**: Smooth, high-fidelity browsing interface engineered for massive collections, complete with optimized thumbnails, lazy rendering, and keyboard shortcuts.
+* **🎬 Frame Extraction & Transcoding**: Integrated media player that generates preview frames on-the-fly, allowing you to scan and search video timelines.
+* **🛠️ Background Jobs & Pipelines**: Monitor transcoder activity, neural network indexing, database sync tasks, and format compression pipelines in real-time.
+* **🔒 Secure Local Archiving**: Designed to run entirely in a local or self-hosted server environment, keeping your high-resolution original images and metadata completely private.
+
+## <SketchUnderline>Architecture & Tech Stack</SketchUnderline>
+
+Portfolai Web is engineered as a modern decoupled application:
+
+* **Backend API**: Structured Go application utilizing clean Hexagonal Architecture for testability, speed, and low memory overhead.
+* **Frontend Dashboard**: Responsive React + TypeScript Single Page Application (SPA) powered by Vite, Tailwind CSS, TanStack Router, and glassmorphism design layouts.
+* **Database**: Lightweight SQLite database with a custom SQL layer, with optional extensions for PostgreSQL.
+* **Processing Engine**: Seamlessly interfaces with the **Imaginarium CLI** Rust engine for background scaling, metadata extraction, and neural model execution.

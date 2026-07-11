@@ -3,8 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "predev": "node scripts/sync-docs.js",
-    "prebuild": "node scripts/sync-docs.js",
+    "genops": "node scripts/generate-ops.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -16,6 +15,8 @@
     "astro": "^6.0.1",
     "node-addon-api": "^8.3.0",
     "node-gyp": "^11.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "sharp": "^0.34.2",
     "sketchbook-ui": "^1.0.1"
   }

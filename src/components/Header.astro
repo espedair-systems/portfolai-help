@@ -1,0 +1,98 @@
+---
+import config from 'virtual:starlight/user-config';
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+const shouldRenderSearch =
+	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+// Normalizing pathname to determine active link
+const { pathname } = Astro.url;
+const isImaginarium = pathname.includes('/imaginarium/');
+const isDesktop = pathname.includes('/desktop/');
+const isPortfolai = pathname.includes('/portfolai/');
+---
+
+<div class="header sl-flex">
+	<div class="title-wrapper sl-flex">
+		<SiteTitle />
+	</div>
+	
+	<!-- Top Navigation Links -->
+	<nav class="top-nav sl-flex">
+		<a href="/imaginarium/" class={isImaginarium ? "active" : ""}>Imaginarium CLI</a>
+		<a href="/desktop/" class={isDesktop ? "active" : ""}>Desktop App</a>
+		<a href="/portfolai/" class={isPortfolai ? "active" : ""}>Portfolai Web</a>
+	</nav>
+	
+	<!-- Right-aligned group -->
+	<div class="right-group sl-flex print:hidden">
+		{shouldRenderSearch && (
+			<div class="search-wrapper">
+				<Search />
+			</div>
+		)}
+		<div class="theme-wrapper sl-flex">
+			<ThemeSelect />
+		</div>
+		<LanguageSelect />
+	</div>
+</div>
+
+<style>
+	.header {
+		height: 100%;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--sl-nav-gap);
+		width: 100%;
+	}
+	
+	.title-wrapper {
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	.top-nav {
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+	}
+
+	.top-nav a {
+		text-decoration: none;
+		color: var(--sl-color-gray-3);
+		font-weight: 500;
+		font-size: var(--sl-text-sm);
+		transition: color 0.2s ease;
+	}
+
+	.top-nav a:hover,
+	.top-nav a.active {
+		color: var(--sl-color-text-accent);
+	}
+
+	.right-group {
+		align-items: center;
+		gap: 1.5rem;
+		flex-shrink: 0;
+	}
+
+	.search-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	.theme-wrapper {
+		align-items: center;
+	}
+
+	@media (max-width: 50rem) {
+		.top-nav {
+			display: none;
+		}
+	}
+</style>

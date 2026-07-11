@@ -1,14 +1,24 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
-	base: '/help',
+	base: '/',
+
+	alias: {
+		'@': './src',
+	},
 
 	// base: '/portfolai-public',
 	// site: 'https://espedair-systems.github.io',
 
+	markdown: {
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeKatex],
+	},
 
 	integrations: [
 		starlight({
@@ -16,11 +26,12 @@ export default defineConfig({
 			components: {
 				Head: './src/components/Head.astro',
 				Sidebar: './src/components/Sidebar.astro',
+				Header: './src/components/Header.astro',
 			},
 			customCss: [
 				'./src/styles/custom.css',
+				'katex/dist/katex.min.css',
 			],
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/espedair-systems/portfolai-public' }],
 			sidebar: [
 				{
 					label: 'Getting Started',
@@ -47,6 +58,36 @@ export default defineConfig({
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
+				},
+				{
+					label: 'Imaginarium',
+					items: [
+						{ label: 'CLI Introduction', link: '/imaginarium/' },
+						{
+							label: 'Commands',
+							autogenerate: { directory: 'imaginarium/commands' }
+						},
+						{
+							label: 'Operations',
+							autogenerate: { directory: 'imaginarium/operations' }
+						},
+						{
+							label: 'Guides',
+							autogenerate: { directory: 'imaginarium/guides' }
+						}
+					]
+				},
+				{
+					label: 'Desktop',
+					items: [
+						{ label: 'App Overview', link: '/desktop/' }
+					]
+				},
+				{
+					label: 'Portfolai',
+					items: [
+						{ label: 'Web Overview', link: '/portfolai/' }
+					]
 				},
 			],
 		}),
